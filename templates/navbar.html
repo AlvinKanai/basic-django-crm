@@ -1,12 +1,15 @@
+{% load static %}
 <header>
     <nav>
         <div class="nav-logo">
-            <img src="{% static 'images/cimply-logo.png' %}" alt="nav-logo">
+            <img src="{% static 'images/cimply-logo.png' %}" alt="nav-logo" width="70" height="50">
             <span>CIMPLY</span>
         </div>
         <div class="nav-menu">
-            <li>Sign Up</li>
-            <li>Login</li>
+            {% if request.user.is_authenticated %} {{ request.user.first_name }} {{ request.user.last_name }}
+            <a href="{% url 'pages:logout' %}">Logout</a> {% else %}
+            <a href="{% url 'pages:login' %}">Login</a> {% endif %}
+
         </div>
 
     </nav>

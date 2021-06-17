@@ -1,4 +1,4 @@
-{% extends "base.html" %} {% load static %} {% block title %} Update Lead {% endblock title %} {% block content %}
+{% extends "base.html" %} {% block title %} Update Lead {% endblock title %} {% block content %}
 
 <section class="lead-update">
     <a href="{% url 'leads:lead-detail' lead.pk %}">Back to {{ lead.first_name }} {{ lead.last_name }}</a>

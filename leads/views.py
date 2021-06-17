@@ -1,5 +1,6 @@
 from django.shortcuts import redirect, reverse
 from django.views import generic
+from django.core.mail import send_mail
 from .models import Lead
 from .forms import LeadModelForm
 
@@ -24,6 +25,16 @@ class LeadCreateView(generic.CreateView):
 
     def get_success_url(self):
         return reverse('leads:lead-list')
+
+    def form_valid(self, form):
+        # sending emails before it creates the lead
+        send_mail(
+            subject="You're a lead on Cimply",
+            message="You have been added as a new lead on Cimply CRM. Visit cimply.com to view",
+            from_email="admin@cimply.com",
+            recipient_list=["userone@test.com"],
+        )
+        return super(LeadCreateView, self).form_valid(form)
 
 
 class LeadUpdateView(generic.UpdateView):
