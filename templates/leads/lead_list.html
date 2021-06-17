@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% load static %} {% block title %} Leads {% endblock title %} {% block content %}
+
+<section class="lead-list">
+    <h2>Lead List Page</h2>
+
+    <a href="{% url 'leads:lead-create' %}">Add a Lead</a>
+
+    <div class="leads">
+        {% for lead in leads %}
+        <p><a href="{% url 'leads:lead-detail' lead.pk %}" class="lead">{{ lead.first_name }} {{ lead.last_name }}</a></p> {% endfor %}
+    </div>
+
+
+</section>
+
+{% endblock content %}

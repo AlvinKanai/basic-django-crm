@@ -1,0 +1,22 @@
+{% extends "base.html" %} {% load static %} {% block title %} {{ lead.first_name }} {{ lead.last_name }} {% endblock title %} {% block content %}
+
+<section class="lead-detail">
+    <h2>{{ lead.first_name }}'s Details</h2>
+    <a href="{% url 'leads:lead-list' %}">Back to Leads</a>
+
+    <div class="lead-mgt">
+        <a href="{% url 'leads:lead-update' lead.pk%}">Update Lead</a>
+        <a href="{% url 'leads:lead-delete' lead.pk%}">Delete Lead</a>
+    </div>
+    <div class="details">
+        <p> {{ lead.first_name }} {{ lead.last_name }} </p>
+        <p> {{ lead.email }} </p>
+        <p> {{ lead.phone}} </p>
+        <p> {{ lead.agent}} </p>
+        <p> {{ lead.created_at }} </p>
+
+    </div>
+
+</section>
+
+{% endblock content %}
