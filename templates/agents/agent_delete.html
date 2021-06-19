@@ -1,0 +1,16 @@
+{% extends "base.html" %} {% block title %} Delete Agent {% endblock title %} {%
+block content %}
+
+<section class="delete-view">
+  <h2>Are you sure you want to delete this agent?</h2>
+  <div class="delete-name-tag">
+    {{ agent.first_name }} {{ agent.last_name }}
+  </div>
+
+  <form method="POST">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit">Delete</button>
+  </form>
+</section>
+
+{% endblock content %}

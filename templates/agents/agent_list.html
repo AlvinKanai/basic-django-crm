@@ -1,0 +1,13 @@
+{% extends "base.html" %} {% block title %} Agents {% endblock title %} {% block content %}
+<section class="list">
+    <h2>Agent List Page</h2>
+
+    <a href="{% url 'agents:agent-create' %}">Add an Agent</a>
+
+    <div class="agents">
+        {% for agent in agents %}
+        <p><a href="{% url 'agents:agent-detail' agent.pk %}" class="lead">{{ agent.first_name }} {{ agent.last_name }}</a></p> {% endfor %}
+    </div>
+</section>
+
+{% endblock content %}
