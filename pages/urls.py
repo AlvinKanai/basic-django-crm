@@ -1,5 +1,8 @@
 from django.urls import path
-from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.auth.views import (
+    LoginView,
+    LogoutView,
+)
 from .views import LandingPageView, SignUpView
 
 app_name = 'pages'

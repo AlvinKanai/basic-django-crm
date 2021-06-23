@@ -13,7 +13,7 @@ class UserProfile(models.Model):
     user = models.OneToOneField('User', on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.first_name}{self.last_name}"
+        return f"{self.user.first_name}{self.user.last_name}"
 
 
 class Lead(models.Model):
@@ -22,7 +22,8 @@ class Lead(models.Model):
     email = models.EmailField(max_length=100)
     phone = models.CharField(max_length=15)
     created_at = models.DateTimeField(default=timezone.now)
-    agent = models.ForeignKey('Agent', on_delete=models.SET_NULL, null=True)
+    organization = models.ForeignKey('UserProfile', on_delete=models.CASCADE)
+    agent = models.ForeignKey('Agent', on_delete=models.SET_NULL, null=True, blank=True)
 
     def __str__(self):
         return f"{self.first_name}{self.last_name}"
