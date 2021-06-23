@@ -1,16 +1,13 @@
-{% extends "base.html" %} {% block title %} Update Agent {% endblock title %} {%
-block content %}
+{% extends "base.html" %} {% block title %} Update Agent {% endblock title %} {% block content %}
 
 <section class="update">
-  <a href="{% url 'agents:agent-detail' agent.pk %}"
-    >Back to {{ agent.first_name }} {{ agent.last_name }}</a
-  >
-  <h2>Update {{ agent.first_name }} {{ agent.last_name }}</h2>
+    <a href="{% url 'agents:agent-detail' agent.pk %}">Back to {{ agent.first_name }} {{ agent.last_name }}</a>
+    <h2 class="page-title">Update {{ agent.first_name }} {{ agent.last_name }}</h2>
 
-  <form method="POST">
-    {% csrf_token %} {{ form.as_p }}
-    <button type="submit">Update</button>
-  </form>
+    <form method="POST">
+        {% csrf_token %} {{ form.as_p }}
+        <button type="submit">Update</button>
+    </form>
 </section>
 
 {% endblock content %}

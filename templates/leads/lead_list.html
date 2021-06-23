@@ -1,18 +1,17 @@
 {% extends "base.html" %} {% block title %} Leads {% endblock title %} {% block content %}
 
 <section class="list">
-    <h2>Lead List Page</h2>
-
-    <a href="{% url 'leads:lead-create' %}">Add a Lead</a>
+    <h2 class="page-title">Leads</h2>
+    {% if request.user.is_organizer %}
+    <a href="{% url 'leads:lead-create' %}">Add a Lead</a> {% endif %}
 
     <div class="leads">
         {% for lead in leads %}
         <p>
-            <a href="{% url 'leads:lead-detail' lead.pk %}" class="lead">{{ lead.first_name }} {{ lead.last_name }}</a
-      >
-    </p>
-    {% endfor %}
-  </div>
+            <a href="{% url 'leads:lead-detail' lead.pk %}" class="lead">{{ lead.first_name }} {{ lead.last_name }}</a>
+        </p>
+        {% endfor %}
+    </div>
 </section>
 
 {% endblock content %}

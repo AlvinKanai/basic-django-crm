@@ -1,7 +1,7 @@
 {% extends "base.html" %} {% block title %} {{ lead.first_name }} {{ lead.last_name }} {% endblock title %} {% block content %}
 
 <section class="lead-detail">
-    <h2>{{ lead.first_name }}'s Details</h2>
+    <h2 class="page-title">{{ lead.first_name }}'s Details</h2>
     <a href="{% url 'leads:lead-list' %}">Back to Leads</a>
 
     <div class="lead-mgt">

@@ -1,0 +1,106 @@
+* {
+    font-family: Microsoft JhengHei UI Light;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #f8f8f8;
+}
+
+.container {
+    width: 70vw;
+    margin: 0 auto;
+    justify-content: center;
+}
+
+.main-nav {
+    width: 90vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 auto;
+    padding: .2em 0;
+}
+
+.nav-logo {
+    display: flex;
+    align-items: center;
+}
+
+.nav-logo img {
+    width: 100px;
+    height: 60px;
+}
+
+.logo-txt {
+    font-weight: 600;
+    font-size: 1.5em;
+    font-family: Bradley Hand ITC;
+}
+
+.logo-txt:hover {
+    color: #00716A;
+}
+
+.user-name {
+    font-family: Bradley Hand ITC;
+    color: #00716A;
+    font-weight: 600;
+    text-decoration: underline double;
+    letter-spacing: .1em;
+    font-size: .8em;
+}
+
+a {
+    text-decoration: none;
+    color: #00716A;
+    font-family: Bradley Hand ITC;
+    font-weight: 600;
+    font-size: 1em;
+    margin-top: .5em;
+    padding: .5em;
+    letter-spacing: .1em;
+}
+
+a:hover {
+    color: #b4b4b4;
+    transition: all ease .5s;
+}
+
+button {
+    font-family: Bradley Hand ITC;
+    color: #00716A;
+    font-weight: 600;
+    margin-top: .5em;
+    padding: .2em 1em;
+    letter-spacing: .1em;
+    font-size: 1em;
+}
+
+.landing-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 1em auto;
+    align-items: center;
+}
+
+.welcome-title {
+    text-transform: uppercase;
+    font-family: Bradley Hand ITC;
+    color: #00716A;
+    font-size: 2em;
+}
+
+.welcome-txt {
+    text-align: center;
+}
+
+.page-title {
+    font-family: Bradley Hand ITC;
+    text-transform: uppercase;
+    margin: .5em 0;
+    text-align: center;
+}

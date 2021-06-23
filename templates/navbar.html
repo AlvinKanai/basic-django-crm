@@ -1,13 +1,14 @@
 {% load static %}
 <header>
-    <nav>
+    <nav class="main-nav">
         <div class="nav-logo">
-            <img src="{% static 'images/cimply-logo.png' %}" alt="nav-logo" width="70" height="50">
-            <span>CIMPLY</span>
+            <a href="{% url 'pages:landing-page' %}"><img src="{% static 'images/crm-svg-logo.svg' %}" alt="nav-logo"></a>
+            <!-- <a href="{% url 'pages:landing-page' %}" class="logo-txt">CIMPLY</a> -->
         </div>
         <div class="nav-menu">
-            <a href="{% url 'agents:agent-list'%}">Agents</a>
-            <a href="{% url 'leads:lead-list'%}">Leads</a> {% if request.user.is_authenticated %} {{ request.user.first_name }} {{ request.user.last_name }}
+            {% if request.user.is_authenticated %} <span class="user-name">{{ request.user.first_name }} {{ request.user.last_name }}</span> {% if request.user.is_organizer %}
+            <a href="{% url 'agents:agent-list'%}">Agents</a> {% endif %}
+            <a href="{% url 'leads:lead-list'%}">Leads</a>
             <a href="{% url 'pages:logout' %}">Logout</a> {% else %}
             <a href="{% url 'pages:login' %}">Login</a> {% endif %}
 
