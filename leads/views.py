@@ -32,7 +32,7 @@ class LeadDetailView(LoginRequiredMixin, generic.DetailView):
     context_object_name = 'lead'
 
     def get_queryset(self):
-        user = request.user
+        user = self.request.user
         
         if user.is_organizer:
             queryset = Lead.objects.filter(organization = user.userprofile)
