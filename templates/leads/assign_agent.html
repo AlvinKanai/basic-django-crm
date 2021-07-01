@@ -1,0 +1,9 @@
+{% extends "base.html" %} {% block title %} Assign Agent {% endblock title %} {% block content %}
+<h2 class="page-title">Assign an agent</h2>
+<form method="POST">
+    {% csrf_token %} {{ form.as_p }}
+    <button type="submit">Assign</button>
+
+</form>
+
+{% endblock content %}

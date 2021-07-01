@@ -2,7 +2,7 @@
 
 <section class="list">
     <h2 class="page-title">Leads</h2>
-    {% if request.user.is_organizer %}
+    <a href="{% url 'categories:category-list' %}">View categories</a> {% if request.user.is_organizer %}
     <a href="{% url 'leads:lead-create' %}">Add a Lead</a> {% endif %}
 
     <div class="leads">
@@ -11,6 +11,14 @@
             <a href="{% url 'leads:lead-detail' lead.pk %}" class="lead">{{ lead.first_name }} {{ lead.last_name }}</a>
         </p>
         {% endfor %}
+        <!-- unassigned leads section -->
+        {% if unassigned_leads.exists %}
+        <h2 class="page-title">Unassigned Leads</h2>
+        {% for lead in unassigned_leads %}
+        <p>
+            <a href="{% url 'leads:assign-agent' lead.pk %}" class="lead">{{ lead.first_name }} {{ lead.last_name }}</a>
+        </p>
+        {% endfor %} {% endif %}
     </div>
 </section>
 
