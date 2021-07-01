@@ -1,0 +1,28 @@
+{% extends "base.html" %} {% block title %} Categories {% endblock title %} {% block content %}
+
+<h2 class="page-title">Categories</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Name</td>
+                <th>Lead Count</td>
+        </tr>
+
+    </thead>
+
+    <tbody>
+        <tr>
+            <td>Unassigned</td>
+            <td> {{ unassigned_lead_count}} </td>
+        </tr>
+        {% for category in categories %}
+        <tr>
+            <td><a href="{% url 'category:category-detail' category.pk %}"> {{ category.name }} </a></td>
+            <td> 10 </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock content %}

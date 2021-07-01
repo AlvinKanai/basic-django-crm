@@ -1,0 +1,30 @@
+{% extends "base.html" %} {% block title %} {{ category.name }} {% endblock title %} {% block content %}
+
+<section>
+
+    <h2 class="page-title"> {{ category.name }} </h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>First Name</td>
+                    <th>Last Name</td>
+            </tr>
+
+        </thead>
+
+        <tbody>
+            <!-- uses related name in the model -->
+            {% for lead in category.leads.all %}
+            <tr>
+                <td><a href="{% url 'leads:lead-detail' lead.pk %}">{{ lead.first_name }} </a></td>
+                <td>{{ lead.last_name }}</td>
+                <td><a href="{% url 'categories:lead-category-update' lead.pk %}">Update</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</section>
+
+{% endblock content %}
