@@ -3,6 +3,8 @@
 <section>
 
     <h2 class="page-title"> {{ category.name }} </h2>
+    <a href="{% url 'categories:category-update' category.pk %}">Update</a>
+    <a href="{% url 'categories:category-delete' category.pk %}">Delete</a>
 
     <table>
         <thead>
