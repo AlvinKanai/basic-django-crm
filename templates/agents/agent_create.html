@@ -2,7 +2,7 @@
 <section class="create-page">
     <h2 class="page-title">Add an Agent</h2>
     <form method="POST">
-        {% csrf_token %} {{ form.as_p }}
+        {% csrf_token %} {{ form|crispy }}
         <button type="submit">Create</button>
     </form>
 </section>

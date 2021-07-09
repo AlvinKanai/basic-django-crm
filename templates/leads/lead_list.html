@@ -10,6 +10,12 @@
         <p>
             <a href="{% url 'leads:lead-detail' lead.pk %}" class="lead">{{ lead.first_name }} {{ lead.last_name }}</a>
         </p>
+
+        {% empty %}
+
+        <p>There are no leads available at the moment</p>
+
+
         {% endfor %}
         <!-- unassigned leads section -->
         {% if unassigned_leads.exists %}

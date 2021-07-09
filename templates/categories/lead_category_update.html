@@ -6,7 +6,7 @@
       <h2 class="page-title">Update {{ lead.first_name }}'s Category</h2>
     
       <form method="POST">
-        {% csrf_token %} {{ form.as_p }}
+        {% csrf_token %} {{ form|crispy }}
         <button type="submit">Update</button>
       </form>
     </section>

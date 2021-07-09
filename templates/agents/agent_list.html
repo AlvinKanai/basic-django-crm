@@ -6,7 +6,13 @@
 
     <div class="agents">
         {% for agent in agents %}
-        <p><a href="{% url 'agents:agent-detail' agent.pk %}" class="lead">{{ agent.first_name }} {{ agent.last_name }}</a></p> {% endfor %}
+        <p><a href="{% url 'agents:agent-detail' agent.pk %}" class="lead">{{ agent.first_name }} {{ agent.last_name }}</a></p>
+
+        {% empty %}
+
+        <p>There are no leads available at the moment</p>
+
+        {% endfor %}
     </div>
 </section>
 

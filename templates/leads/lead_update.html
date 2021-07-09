@@ -1,16 +1,13 @@
-{% extends "base.html" %} {% block title %} Update Lead {% endblock title %} {%
-block content %}
+{% extends "base.html" %} {% block title %} Update Lead {% endblock title %} {% block content %}
 
 <section class="lead-update">
-  <a href="{% url 'leads:lead-detail' lead.pk %}"
-    >Back to {{ lead.first_name }} {{ lead.last_name }}</a
-  >
-  <h2 class="page-title">Update {{ lead.first_name }} {{ lead.last_name }}</h2>
+    <a href="{% url 'leads:lead-detail' lead.pk %}">Back to {{ lead.first_name }} {{ lead.last_name }}</a>
+    <h2 class="page-title">Update {{ lead.first_name }} {{ lead.last_name }}</h2>
 
-  <form method="POST">
-    {% csrf_token %} {{ form.as_p }}
-    <button type="submit">Update</button>
-  </form>
+    <form method="POST">
+        {% csrf_token %} {{ form|crispy }}
+        <button type="submit">Update</button>
+    </form>
 </section>
 
 {% endblock content %}

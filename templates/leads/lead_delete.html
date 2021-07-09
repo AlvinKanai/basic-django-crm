@@ -6,7 +6,7 @@
     <div class="delete-name-tag">{{ lead.first_name }} {{ lead.last_name }}</div>
 
     <form method="POST">
-        {% csrf_token %} {{ form.as_p }}
+        {% csrf_token %} {{ form|crispy }}
         <button type="submit">Delete</button>
     </form>
 </section>

@@ -2,7 +2,7 @@
 
 <h2 class="page-title">Login</h2>
 <form method="POST">
-    {% csrf_token %} {{ form.as_p }}
+    {% csrf_token %} {{ form|crispy }}
     <button type="submit">Login</button>
     <a href="{% url 'reset-password' %}">Forgot password?</a>
 </form>
