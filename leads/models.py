@@ -21,10 +21,11 @@ class Lead(models.Model):
     last_name = models.CharField(max_length=30)
     email = models.EmailField(max_length=100)
     phone = models.CharField(max_length=15)
+    description = models.TextField(max_length = 500)
     created_at = models.DateTimeField(default=timezone.now)
     organization = models.ForeignKey('UserProfile', on_delete=models.CASCADE)
     agent = models.ForeignKey('Agent', on_delete=models.SET_NULL, null=True, blank=True)
-    category = models.ForeignKey('Category', related_name='leads', on_delete=models.SET_NULL, null = True, blank = True)
+    category = models.ForeignKey('Category', related_name='leads', on_delete=models.SET_NULL, null = True, blank = True, default = 'New')
 
     def __str__(self):
         return f"{self.first_name}{self.last_name}"

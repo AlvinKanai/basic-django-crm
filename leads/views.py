@@ -64,6 +64,9 @@ class LeadCreateView(OrganizerAndLoginRequiredMixin, generic.CreateView):
         return reverse('leads:lead-list')
 
     def form_valid(self, form):
+        lead = form.save(commit = False)
+        lead.organisation = self.request.user.userprofile
+        lead.save()
         # sending emails before it creates the lead
         send_mail(
             subject="You're a lead on Cimply",
