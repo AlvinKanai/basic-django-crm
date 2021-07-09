@@ -1,7 +1,8 @@
 from django.shortcuts import reverse
 from django.contrib.auth.mixins import LoginRequiredMixin
+from agents.mixins import OrganizerAndLoginRequiredMixin
 from django.views import generic
-from .forms import LeadCategoryUpdateForm
+from .forms import LeadCategoryUpdateForm, CreateCategoryForm
 from leads.models import Lead, Category
 
 # Create your views here.
@@ -13,7 +14,7 @@ class CategoryListView(LoginRequiredMixin, generic.ListView):
         user  = self.request.user
         
         if user.is_organizer:
-            queryset = Category.objects.fiilter(organization = user.userprofile)
+            queryset = Category.objects.filter(organization = user.userprofile)
         else:
             queryset = Category.objects.filter(organization = user.agent.organization)
             
@@ -74,3 +75,50 @@ class LeadCategoryUpdateView(LoginRequiredMixin, generic.UpdateView):
     
     def get_success_url(self):
         return reverse('leads:lead-detail', kwargs={'pk': self.get_object().id})
+    
+class CategoryCreateView(OrganizerAndLoginRequiredMixin, generic.CreateView):
+    template_name = 'categories/category_create.html'
+    form_class = CreateCategoryForm
+    
+    def get_success_url(self):
+        return reverse('categories:category-list')
+    
+    def form_valid(self, form):
+        category = form.save(commit=False)
+        category.organization = self.request.user.userprofile
+        category.save()
+        return super(CategoryCreateView, self).form_valid(form)
+    
+class CategoryUpdateView(OrganizerAndLoginRequiredMixin, generic.UpdateView):
+    template_name = 'categories/category_update.html'
+    form_class = CreateCategoryForm
+    context_object_name ='category'
+        
+    def get_success_url(self):
+        return reverse('categories:category-list')
+    
+    def get_queryset(self):
+        user = self.request.user
+        
+        if user.is_organizer:
+            queryset = Category.objects.filter(organization = user.userprofile)
+        else:
+            queryset = Category.objects.filter(organization = user.agent.organization)
+            
+        return queryset
+
+class CategoryDeleteView(OrganizerAndLoginRequiredMixin, generic.DeleteView):
+    template_name = 'categories/category_delete.html'
+    
+    def get_success_url(self):
+        return reverse('categories:category-list')
+    
+    def get_queryset(self):
+        user = self.request.user
+        
+        if user.is_organizer:
+            queryset = Category.objects.filter(organization = user.userprofile)
+        else:
+            queryset = Category.objects.filter(organization = user.agent.organization)
+            
+        return queryset

@@ -1,0 +1,11 @@
+{% extends "base.html" %} {% block title %} Delete Category {% endblock title %} {% block content %}
+
+<h2 class="page-title">Delete {{ category.name }}</h2>
+<form method="POST">
+    {% csrf_token %} {{ form|crispy }}
+    <button type="submit">Delete</button>
+
+</form>
+
+
+{% endblock content %}

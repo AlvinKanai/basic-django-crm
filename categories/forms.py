@@ -1,6 +1,5 @@
 from django import forms
-from leads.models import Lead
-
+from leads.models import Lead, Category
 
 class LeadCategoryUpdateForm(forms.ModelForm):
     class Meta:
@@ -9,4 +8,11 @@ class LeadCategoryUpdateForm(forms.ModelForm):
             'category',
         )
         
+        
+class CreateCategoryForm(forms.ModelForm):
+    class Meta:
+        model = Category
+        fields = (
+            'name',
+        )
         
