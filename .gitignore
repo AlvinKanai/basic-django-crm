@@ -161,4 +161,6 @@ Thumbs.db
 # vscode configuration settings
 .vscode
 
+# environment variables
+.env
 # End of https://www.toptal.com/developers/gitignore/api/django
